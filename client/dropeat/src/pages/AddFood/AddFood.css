@@ -1,0 +1,68 @@
+.add-food-container{
+    margin-top:40px;
+}
+
+.contact-form{
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form label{
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.contact-form .form-control{
+    width:100%;
+    padding:10px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.contact-form .form-control:focus{
+    border-color:#007bff;
+    outline:none;
+    box-shadow:0 0 5px rgba(0,123,255,0.3);
+}
+
+.contact-form textarea{
+    height:120px;
+    resize:none;
+}
+
+.upload-box{
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+.upload-box img{
+    border:2px dashed #ccc;
+    padding:15px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.upload-box img:hover{
+    border-color:#007bff;
+}
+
+.submit-btn{
+    width:100%;
+    padding:12px;
+    background:#007bff;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    background:#21a208;
+}
