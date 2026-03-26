@@ -1,27 +1,39 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FaTrash } from "react-icons/fa";
+import { deleteFood, getFoodList } from "../../services/foodServices";
 
 const ListFood = () => {
   const [list, setList] = useState([]);
 
   const fetchlist = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/foods");
-
-      if (response.status === 200) {
-        setList(response.data);
-      } else {
-        toast.error("Error while reading the food");
-      }
+      const data = await getFoodList();
+      setList(data);
     } catch (error) {
       toast.error("API error");
+      console.log(error);
+      
     }
   };
 
   useEffect(() => {
     fetchlist();
   }, []);
+
+  // Delete food By ID
+  const handleDelete = async (id) => {
+    try {
+    await deleteFood(id);
+    setList(list.filter((food) => food.id !== id));
+
+    toast.success("Food deleted successfully");
+    } catch (error) {
+      toast.error("Enable to delete Food");
+      console.log(error);
+    }
+  };
 
   return (
     <div className="container py-5">
@@ -62,10 +74,14 @@ const ListFood = () => {
                   <td>₹{item.price}</td>
 
                   <td className="text-center text-danger">
-                    <i
-                      className="bi bi-x-circle-fill"
-                      style={{ cursor: "pointer", fontSize: "18px" }}
-                    ></i>
+                    <FaTrash
+                      style={{
+                        cursor: "pointer",
+                        color: "red",
+                        fontSize: "18px",
+                      }}
+                      onClick={() => handleDelete(item.id)}
+                    />
                   </td>
                 </tr>
               ))}
