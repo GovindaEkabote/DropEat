@@ -27,7 +27,6 @@ const ListFood = () => {
     try {
     await deleteFood(id);
     setList(list.filter((food) => food.id !== id));
-
     toast.success("Food deleted successfully");
     } catch (error) {
       toast.error("Enable to delete Food");
